@@ -1,7 +1,7 @@
 #include "control.h"
 #include "sys.h"
 
-float Kp = 20, Ki = 0, Kd = 5;                       //pid弯道参数参数 
+float Kp = 10, Ki = 00.4, Kd = 0;                       //pid弯道参数参数 
 float error = 0, P = 0, I = 0, D = 0, PID_value = 0; //pid直道参数,静态误差
 float previous_error = 0, previous_I = 0;            //误差值 
 static int initial_motor_speed = 80;                //电机初始速度 

@@ -4,7 +4,6 @@
 u8 flag_Stop=1;     //停止标志位
 int Encoder;        //编码器的脉冲计数
 int motor;           //电机PWM变量
-vu16 ldr[7];        //ADC数值存放的变量
 int Offset = 0;     //偏移量
 
 
@@ -15,13 +14,13 @@ int Offset = 0;     //偏移量
 	 LED_Init();               //=====初始化与 LED 连接的硬件接口
 	 UART_Init(115200);         //=====初始化串口1
 	 MOTOR_Init();              //初始化控制电机所需的IO
-	 pwm_Init(7199,0);         //初始化pwm输出
+	 pwm_Init(7199,0);         //初始化pwm输出，10Khz
 	 //Encoder_Init_TIM2();      //初始化计数器（定时器）,循迹小车暂时用不到
 	 ADC_Configuration();      //ADC初始化设置,
 	 TIM3_Int_Init(99,7199);   //10ms一次中断
 	 while(1)
 	 {
-	 //printf("Encoder:%d \r\n",Encoder);
+	 //printf("Offset:%d \r\n",Offset);
 	 }
  }
 
