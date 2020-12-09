@@ -33,7 +33,7 @@
 "..\obj\key.o"
 "..\obj\ldr.o"
 "..\obj\control.o"
---strict --scatter "..\OBJ\Template.sct"
+--strict --scatter "..\OBJ\Tracking-car.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
---list ".\Template.map" -o ..\OBJ\Template.axf
+--list ".\Tracking-car.map" -o ..\OBJ\Tracking-car.axf

@@ -3,7 +3,7 @@
 ..\obj\ldr.o: ..\SYSTEM\sys\sys.h
 ..\obj\ldr.o: ..\USER\stm32f10x.h
 ..\obj\ldr.o: ..\CORE\core_cm3.h
-..\obj\ldr.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\ldr.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\ldr.o: ..\USER\system_stm32f10x.h
 ..\obj\ldr.o: ..\USER\stm32f10x_conf.h
 ..\obj\ldr.o: ..\STM32F10x_FWLib\inc\stm32f10x_adc.h
@@ -35,7 +35,7 @@
 ..\obj\ldr.o: ..\HAREWER\LED\led.h
 ..\obj\ldr.o: ..\HAREWER\KEY\key.h
 ..\obj\ldr.o: ..\SYSTEM\usart\usart.h
-..\obj\ldr.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\ldr.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\ldr.o: ..\HAREWER\TIMER\timer.h
 ..\obj\ldr.o: ..\HAREWER\MOTO\moto.h
 ..\obj\ldr.o: ..\HAREWER\ENCODER\encoder.h
