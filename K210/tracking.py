@@ -1,8 +1,8 @@
 THRESHOLD = (30, 45, -10, 10, -5, 4)
 
-edge = (-1,-1,-1,-1,8,-1,-1,-1,-1)  #边缘化
-sharp = (-1,-1,-1,-1,9,-1,-1,-1,-1) #锐化
-relievo = (2,0,0,0,-1,0,0,0,-1)     #浮雕化
+# edge = (-1,-1,-1,-1,8,-1,-1,-1,-1)  #边缘化
+# sharp = (-1,-1,-1,-1,9,-1,-1,-1,-1) #锐化
+# relievo = (2,0,0,0,-1,0,0,0,-1)     #浮雕化
 import sensor, image, time, lcd
 from fpioa_manager import *
 from fpioa_manager import fm
