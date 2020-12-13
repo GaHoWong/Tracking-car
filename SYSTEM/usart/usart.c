@@ -32,9 +32,6 @@ int fputc(int ch, FILE *f)
 }
 #endif 
 
- 
- 
-#if EN_USART1_RX   //如果使能了接收
 //串口1中断服务程序
 //注意,读取USARTx->SR能避免莫名其妙的错误   	
 u8 USART_RX_BUF[USART_REC_LEN];     //接收缓冲,最大USART_REC_LEN个字节.
@@ -88,9 +85,6 @@ void UART_Init(u32 bound){
 void USART1_IRQHandler(void)                	//串口1中断服务程序
 	{
 	u8 Res;
-#if SYSTEM_SUPPORT_OS 		//如果SYSTEM_SUPPORT_OS为真，则需要支持OS.
-	OSIntEnter();    
-#endif
 	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)  //接收中断(接收到的数据必须是0x0d 0x0a结尾)
 		{
 		Res =USART_ReceiveData(USART1);	//读取接收到的数据
@@ -114,9 +108,5 @@ void USART1_IRQHandler(void)                	//串口1中断服务程序
 				}
 			}   		 
      } 
-#if SYSTEM_SUPPORT_OS 	//如果SYSTEM_SUPPORT_OS为真，则需要支持OS.
-	OSIntExit();  											 
-#endif
-} 
-#endif	
+  }
 

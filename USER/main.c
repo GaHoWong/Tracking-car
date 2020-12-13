@@ -17,10 +17,18 @@ int Offset = 0;     //偏移量
 	 pwm_Init(7199,0);         //初始化pwm输出，10Khz
 	 //Encoder_Init_TIM2();      //初始化计数器（定时器）,循迹小车暂时用不到
 	 ADC_Configuration();      //ADC初始化设置,
-	 TIM3_Int_Init(99,7199);   //10ms一次中断
+	 //TIM3_Int_Init(99,7199);   //10ms一次中断
+	 
 	 while(1)
 	 {
-	 //printf("Offset:%d \r\n",Offset);
+		 printf("ldr[0]:%d \r\n",ldr[0]);
+		 printf("ldr[1]:%d \r\n",ldr[1]);
+		 printf("ldr[2]:%d \r\n",ldr[2]);
+		 printf("ldr[3]:%d \r\n",ldr[3]);
+		 printf("ldr[4]:%d \r\n",ldr[4]);
+		 printf("ldr[5]:%d \r\n",ldr[5]);
+		 printf("ldr[6]:%d \r\n",ldr[6]);
+		 delay_ms(300);
 	 }
  }
 
