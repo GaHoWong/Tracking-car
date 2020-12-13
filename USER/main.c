@@ -13,22 +13,22 @@ int Offset = 0;     //偏移量
 	 delay_init();             //=====延时初始化
 	 LED_Init();               //=====初始化与 LED 连接的硬件接口
 	 UART_Init(115200);         //=====初始化串口1
-	 MOTOR_Init();              //初始化控制电机所需的IO
+	 uart2_init(115200);
 	 pwm_Init(7199,0);         //初始化pwm输出，10Khz
 	 //Encoder_Init_TIM2();      //初始化计数器（定时器）,循迹小车暂时用不到
-	 ADC_Configuration();      //ADC初始化设置,
-	 //TIM3_Int_Init(99,7199);   //10ms一次中断
+	// ADC_Configuration();      //ADC初始化设置,
+	 TIM3_Int_Init(99,7199);   //10ms一次中断
 	 
 	 while(1)
 	 {
-		 printf("ldr[0]:%d \r\n",ldr[0]);
-		 printf("ldr[1]:%d \r\n",ldr[1]);
-		 printf("ldr[2]:%d \r\n",ldr[2]);
-		 printf("ldr[3]:%d \r\n",ldr[3]);
-		 printf("ldr[4]:%d \r\n",ldr[4]);
-		 printf("ldr[5]:%d \r\n",ldr[5]);
-		 printf("ldr[6]:%d \r\n",ldr[6]);
-		 delay_ms(300);
+//		 printf("ldr[0]:%d \r\n",ldr[0]);
+//		 printf("ldr[1]:%d \r\n",ldr[1]);
+//		 printf("ldr[2]:%d \r\n",ldr[2]);
+//		 printf("ldr[3]:%d \r\n",ldr[3]);
+//		 printf("ldr[4]:%d \r\n",ldr[4]);
+//		 printf("ldr[5]:%d \r\n",ldr[5]);
+//		 printf("ldr[6]:%d \r\n",ldr[6]);
+//		 delay_ms(300);
 	 }
  }
 

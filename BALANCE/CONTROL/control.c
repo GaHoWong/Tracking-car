@@ -1,4 +1,5 @@
 #include "control.h"
+#include "K210.h"
 #include "sys.h"
 
 float Kp = 10, Ki = 00.4, Kd = 0;                       //pid弯道参数参数 
@@ -7,7 +8,7 @@ float previous_error = 0, previous_I = 0;            //误差值
 static int initial_motor_speed = 80;                //电机初始速度 
 
 /**************************************************************************
-函数功能：计算偏移量
+函数功能：计算偏移量（红外或是光敏电阻电阻）
 入口参数：无
 返回  值：偏移量
 描    述：
@@ -29,6 +30,27 @@ void tracking_pid(void)
   }
   previous_error = error;
 }
+
+
+
+void K210_PI(void)
+{
+  P = rho_err;
+  I = I + rho_err;
+  D = rho_err - previous_error;
+ 
+  PID_value = (Kp * P) + (Ki * I) + (Kd * D);
+  if(PID_value > 80)
+  {
+    PID_value = 80; 
+  }
+   if(PID_value < 0)
+  {
+    PID_value = 0; 
+  }
+  previous_error = rho_err;
+}
+
 
 /**************************************************************************
 函数功能：计算偏移量
@@ -142,9 +164,10 @@ int TIM3_IRQHandler(void)
  if(TIM_GetFlagStatus(TIM3,TIM_FLAG_Update)==SET)
  {
    TIM_ClearITPendingBit(TIM3,TIM_IT_Update);   //===清除定时器1中断标志位
-	 Read_Offset();                     //读取传感器的偏移值值
+	 //Read_Offset();                     //读取传感器的偏移值值
    //Led_Flash(100);                              //LED闪烁
-	 tracking_pid();              //计算PID
+	 //tracking_pid();              //计算PID
+	 K210_PI();
 	 motor_control();            //控制电机
  }
  return 0;

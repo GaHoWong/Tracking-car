@@ -31,6 +31,7 @@
 "..\obj\timer.o"
 "..\obj\led.o"
 "..\obj\key.o"
+"..\obj\k210.o"
 "..\obj\ldr.o"
 "..\obj\control.o"
 --strict --scatter "..\OBJ\Tracking-car.sct"
