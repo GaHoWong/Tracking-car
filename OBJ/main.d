@@ -40,3 +40,4 @@
 ..\obj\main.o: ..\HAREWER\ENCODER\encoder.h
 ..\obj\main.o: ..\BALANCE\CONTROL\control.h
 ..\obj\main.o: ..\HAREWER\LDR\ldr.h
+..\obj\main.o: ..\HAREWER\K210\K210.h

@@ -4,7 +4,6 @@ THRESHOLD = (30, 45, -10, 10, -5, 4)
 # sharp = (-1,-1,-1,-1,9,-1,-1,-1,-1) #锐化
 # relievo = (2,0,0,0,-1,0,0,0,-1)     #浮雕化
 import sensor, image, time, lcd
-from fpioa_manager import *
 from fpioa_manager import fm
 from machine import UART
 
@@ -22,14 +21,14 @@ sensor.set_auto_gain(0)
 sensor.run(1)                       # run automatically, call sensor.run(0) to stop
 
 #串口初始化
-fm.register(6,fm.fpioa.UART2_TX)
-fm.register(7,fm.fpioa.UART2_RX)
+fm.register(10,fm.fpioa.UART2_TX)
+fm.register(11,fm.fpioa.UART2_RX)
 uart_1 = UART(UART.UART1, 115200, 8, None, 1, timeout=1000, read_buf_len=4096)
 
 clock = time.clock()                # Create a clock object to track the FPS.
 
 #发送打包函数
-def send_data_packet(rho_err, theta_err,magnitude):                                #距离左边的距离rho_err范围0—210，角度theta_err范围0-180
+def send_data_packet(rho_err, theta_err):                                #距离左边的距离rho_err范围0—210，角度theta_err范围0-180
     checkout=(rho_err+theta_err)                                 #校验位,为x坐标+y坐标 的低八位
     data = bytearray([0xAA,0x55,rho_err,theta_err,checkout,0x54])#转成16进制
     uart_1.write(data)                                       #通过串口发送给stm32
@@ -52,7 +51,7 @@ while(True):
             theta_err = int(line.theta()-90)
         img.draw_line(line.line(), color = 127)
         print(magnitude,rho_err,theta_err)
-        send_data_packet(theta_err,rho_err,magnitude)
+        send_data_packet(theta_err,rho_err)
     else:
         rho_err = 0
         theta_err = 0

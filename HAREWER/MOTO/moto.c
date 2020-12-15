@@ -8,7 +8,7 @@
 
 void pwm_Init(u16 arr,u16 psc) //初始化pwm输出引脚
 {	
-	 GPIO_InitTypeDef GPIO_InitStructure;
+	GPIO_InitTypeDef GPIO_InitStructure;
 	TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
 	TIM_OCInitTypeDef  TIM_OCInitStructure;
 

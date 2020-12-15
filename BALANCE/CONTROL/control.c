@@ -40,9 +40,9 @@ void K210_PI(void)
   D = rho_err - previous_error;
  
   PID_value = (Kp * P) + (Ki * I) + (Kd * D);
-  if(PID_value > 80)
+  if(PID_value > 100)
   {
-    PID_value = 80; 
+    PID_value = 100; 
   }
    if(PID_value < 0)
   {
@@ -113,20 +113,20 @@ int Read_Offset(void)
 **************************************************************************/
 void motor_control(void)
 {
-  int left_motor_speed = initial_motor_speed - PID_value;
-  int right_motor_speed = initial_motor_speed + PID_value;
+  int left_motor_speed = ((initial_motor_speed - PID_value)/100)*20;
+  int right_motor_speed =((initial_motor_speed + PID_value)/100)*20;
   
   if(left_motor_speed < 0){
     left_motor_speed = 0;
   }
-  if(left_motor_speed > 80){
-    left_motor_speed = 80;
+  if(left_motor_speed > 100){
+    left_motor_speed = 100;
   }
   if(right_motor_speed < 0){
     right_motor_speed = 0;
   }
-  if(right_motor_speed > 80){
-    right_motor_speed = 80;
+  if(right_motor_speed > 100){
+    right_motor_speed = 100;
   }
   motorsWrite(left_motor_speed,right_motor_speed);
 	
@@ -186,7 +186,7 @@ void  TIM_PwmSetPulse (u8 TIM1_CH,u8 pulse)
 	switch(TIM1_CH)
 	{
 		case 1: TIM_SetCompare1(TIM1,compareValue); break;
-		case 2: TIM_SetCompare2(TIM1,compareValue); break;	
+		case 2: TIM_SetCompare4(TIM1,compareValue); break;	
 		default: break;
 	}
 }
